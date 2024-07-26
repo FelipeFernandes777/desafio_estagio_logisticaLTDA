@@ -1,8 +1,11 @@
-import Image from "next/image";
+import Header from "./components/header/Header";
 
 export default function Home() {
   return (
-    <main>
-    </main>
+    <div className="max-w-screen max-h-screen">
+      <section className="w-screen h-screen">
+        <Header />
+      </section>
+    </div>
   );
 }
