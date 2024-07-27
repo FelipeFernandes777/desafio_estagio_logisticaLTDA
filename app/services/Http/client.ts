@@ -11,13 +11,13 @@ export default class AxiosHttpClient {
   public async request(data: HTTPRequest): Promise<HTTPResponse> {
     try {
       const response = await axios.request({
-        url: this.baseUrl + data.url,
+        url: this.baseUrl,
         method: data.method,
         data: data.body,
       });
       return {
-        statusCode: response.status,
         body: response.data,
+        statusCode: response.status
       };
 
     } catch (error: any) {

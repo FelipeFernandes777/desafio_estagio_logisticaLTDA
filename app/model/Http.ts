@@ -5,9 +5,9 @@ export type HTTPResponse<T = any> = {
 export type HTTPRequest = {
   url: string
   method: HttpMethod
-  body: unknown
-  params: any;
-  headers: any;
+  body?: unknown
+  params?: any;
+  headers?: any;
 }
 
 type HttpMethod = 'post' | 'get' | 'put' | 'delete' | 'patch';

@@ -1,16 +1,19 @@
-import { getResponseApi } from "../utils/getResponseApi";
+import { HTTPResponse } from "../model/Http";
 import { CaractersResponseDTO } from "./dto/get-caracters-response-dto";
+import apiFactory from "./Http/factory";
 
 export default class RequestServices {
-  private url: string;
-  constructor(url: string) {
-    this.url = url;
+
+  private readonly baseUrl: string;
+
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
 
-  public async getCaracters(): Promise<CaractersResponseDTO> {
-    return await getResponseApi(this.url);
+  public async listCaracters(): Promise<HTTPResponse<CaractersResponseDTO[]>> {
+    return await apiFactory(this.baseUrl).request({
+      method: 'get',
+      url: this.baseUrl
+    });
   }
-
-  
-
 }
