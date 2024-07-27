@@ -5,9 +5,10 @@ export interface CaractersResponseDTO {
   powerstats: Powerstats;
   appearance: Appearance;
   biography: Biography;
+  images: Images;
 }
 
-interface Powerstats {
+export interface Powerstats {
   intelligence: number;
   strength: number;
   speed: number;
@@ -16,7 +17,7 @@ interface Powerstats {
   combat: number;
 }
 
-interface Appearance {
+export interface Appearance {
   gender: string;
   race: string;
   height: string[];
@@ -25,8 +26,15 @@ interface Appearance {
   hairColor: string;
 }
 
-interface Biography {
+export interface Biography {
   fullName: string;
   alterEgos: string;
   aliases: string[];
+}
+
+export interface Images {
+  xs: string,
+  sm: string,
+  md: string,
+  lg: string,
 }
