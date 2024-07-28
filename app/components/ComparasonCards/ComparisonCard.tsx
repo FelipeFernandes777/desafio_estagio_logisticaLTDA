@@ -7,7 +7,7 @@ interface Props {
   powerStats: Powerstats
 }
 
-interface ComparisonCardProps {
+export interface ComparisonCardProps {
   cards: Props[];
 }
 
