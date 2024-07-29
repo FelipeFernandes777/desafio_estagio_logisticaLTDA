@@ -11,7 +11,7 @@ pnpm dev
 bun dev
 ```
 
-##Projeto para vaga de estagio da empresa Logistica LTDA.
+Projeto para vaga de estagio da empresa Logistica LTDA.
 
 <ul>
   <li>Framework Utilizada: NextJS com TypeScript</li>
