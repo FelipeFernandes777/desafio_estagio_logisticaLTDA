@@ -7,16 +7,15 @@ import CaractersCard from "./components/CaractersCard";
 import ComparisonCard, { ComparisonCardProps } from "./components/ComparasonCards/ComparisonCard";
 
 export default function Home() {
-  const [caractersData, setCaractersData] = useState<CaractersResponseDTO[]>(); // Guarda todos os dados da api.
-  const [filtered, setFiltered] = useState<CaractersResponseDTO[]>([]); // Guarda os novos dados no array.
-  const [search, setSearch] = useState(""); // Usado para guardar o valor digitado no pesquisar.
-  const [clickedCard, setClickedCard] = useState<ComparisonCardProps["cards"]>([]); // Guardar os cards que foram clicados.
+  const [caractersData, setCaractersData] = useState<CaractersResponseDTO[]>();
+  const [filtered, setFiltered] = useState<CaractersResponseDTO[]>([]);
+  const [search, setSearch] = useState("");
+  const [clickedCard, setClickedCard] = useState<ComparisonCardProps["cards"]>([]);
   const [switchSide, setSwitchSide] = useState<boolean>(false);
   const service = new RequestServices("http://homologacao3.azapfy.com.br/api/ps/metahumans");
 
   const getCaracters = async () => {
     try {
-      // Realiza a chamada da api
       const response = await service.listCaracters();
       setCaractersData(response.body);
       setFiltered(response.body);
@@ -30,7 +29,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Guarda o novo resultado da api
     if (caractersData) {
       setFiltered(caractersData.filter(
         item => item.name.toLowerCase().includes(search.toLowerCase())
@@ -47,7 +45,7 @@ export default function Home() {
   };
 
   const handleClose = () => {
-    setClickedCard([]); // Limpa o estado quando o componente é fechado
+    setClickedCard([]);
   };
 
   const handleSwitchSide = () => {
@@ -55,20 +53,20 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-slate-800 h-full">
-      <header className="w-full h-24 flex items-center bg-[#f7f7f7]">
-        <div className="ml-5 relative flex items-center">
+    <div className="bg-slate-800 h-screen flex flex-col">
+      <header className="w-full h-16 md:h-20 flex items-center bg-[#f7f7f7] p-4 md:p-6">
+        <div className="relative flex items-center w-full max-w-3xl mx-auto">
           <input
             type="text"
-            className="w-full p-3 h-10 shadow-sm rounded-md focus:outline-none"
+            className="w-full p-2 md:p-3 h-10 shadow-sm rounded-md focus:outline-none"
             placeholder="Pesquise o heroi"
             onChange={(event) => setSearch(event.target.value)}
           />
-          <Search className="absolute right-1 opacity-20" />
+          <Search className="absolute right-2 md:right-4 opacity-50" />
         </div>
       </header>
-      <main className="relative flex justify-center items-center">
-        <div className="flex flex-wrap gap-[25px] justify-center items-center p-8">
+      <main className="relative flex flex-1 flex-col items-center p-4 md:p-8 lg:p-12 h-full">
+        <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8 justify-center items-center">
           {filtered ? filtered.map((caracter, index) => (
             <CaractersCard
               key={index}

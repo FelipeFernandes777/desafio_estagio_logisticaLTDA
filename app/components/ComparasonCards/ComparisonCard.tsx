@@ -15,7 +15,7 @@ export interface ComparisonCardProps {
 }
 
 export default function ComparisonCard({ cards, onClose }: ComparisonCardProps) {
-  const [visible, setVisible] = useState<boolean>(true); // Inicialmente visível
+  const [visible, setVisible] = useState<boolean>(true);
   const [winnerResult, setWinnerResult] = useState<{ winner: string; statsComparison: Record<string, string> } | null>(null);
 
   const calculateStats = (powerStats: Powerstats) => {
@@ -91,14 +91,14 @@ export default function ComparisonCard({ cards, onClose }: ComparisonCardProps) 
   }
 
   return (
-    <div className={`w-4/6 h-5/6 border border-blue-700 shadow-lg shadow-zinc-300/15 absolute bg-gradient-to-tr from-blue-600/90 to-slate-700 rounded-md flex flex-col items-center p-10 card ${visible ? '' : 'hidden'}`}>
+    <div className={`w-11/12 md:w-4/6 lg:w-3/4 xl:w-1/2 h-4/5 md:h-4/6 lg:h-5/6 border border-blue-700 shadow-lg shadow-zinc-300/15 absolute bg-gradient-to-tr from-blue-600/90 to-slate-700 rounded-md flex flex-col items-center p-4 md:p-6 lg:p-8 xl:p-10 card ${visible ? '' : 'hidden'}`}>
       <Close className="absolute top-4 right-4 cursor-pointer" onClick={handleVisibility} />
       <div className="w-full mb-4 text-center">
         {winnerResult && (
           <span className="text-2xl font-bold">Winner: {winnerResult.winner}</span>
         )}
       </div>
-      <div className="w-full h-5/6 container flex gap-3">
+      <div className="w-full h-5/6 container flex flex-col md:flex-row gap-3">
         {cards.length === 2 && (
           <>
             <Card
@@ -107,17 +107,15 @@ export default function ComparisonCard({ cards, onClose }: ComparisonCardProps) 
               powerStats={cards[0].powerStats}
               swithSides={true}
             />
-            <div className="h-full w-2/6">
-              <div className="w-full h-full flex items-center justify-center">
-                <ul className="font-bold text-xl text-center">
-                  <li>Inteligência</li>
-                  <li>Força</li>
-                  <li>Velocidade</li>
-                  <li>Durabilidade</li>
-                  <li>Poder</li>
-                  <li>Combate</li>
-                </ul>
-              </div>
+            <div className="h-full w-full md:w-2/6 flex items-center justify-center">
+              <ul className="font-bold text-xl text-center">
+                <li>Inteligência</li>
+                <li>Força</li>
+                <li>Velocidade</li>
+                <li>Durabilidade</li>
+                <li>Poder</li>
+                <li>Combate</li>
+              </ul>
             </div>
             <Card
               name={cards[1].name}

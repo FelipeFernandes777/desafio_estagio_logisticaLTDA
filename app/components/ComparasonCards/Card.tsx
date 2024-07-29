@@ -21,7 +21,7 @@ export default function Card({ name, src, powerStats, swithSides }: CardProps) {
               />
             </div>
             <div className="h-6/6 font-bold text-xl w-[5%]">
-              <ul>
+              <ul className="w-full h-full">
                 <li>{powerStats.intelligence}</li>
                 <li>{powerStats.strength}</li>
                 <li>{powerStats.speed}</li>
@@ -37,7 +37,7 @@ export default function Card({ name, src, powerStats, swithSides }: CardProps) {
         <div className="h-full w-2/6 flex flex-wrap">
           <div className="w-full h-full flex gap-5 items-center justify-center">
             <div className="h-6/6 font-bold text-xl w-[5%]">
-              <ul>
+              <ul className="w-full h-full">
                 <li>{powerStats.intelligence}</li>
                 <li>{powerStats.strength}</li>
                 <li>{powerStats.speed}</li>
